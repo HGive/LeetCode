@@ -1,9 +1,12 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        StringBuilder sb = new StringBuilder();
-        String str = x+"";
-        String backward = sb.append(str).reverse().toString().substring(0,str.length()/2);
-        String forward = str.substring(0,str.length()/2);
-        return backward.equals(forward) ? true : false;
+        if(x<0) return false;
+        int reversed = 0 ;
+        int temp = x ;
+        while(temp!=0){
+            reversed = reversed*10 + temp%10;
+            temp /= 10 ;
+        }
+        return reversed == x;
     }
 }

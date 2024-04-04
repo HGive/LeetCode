@@ -4,7 +4,13 @@
  */
 var expect = function(val) {
     return {
-        toBe : (n) => ( n===val?true : (()=>{throw new Error("Not Equal")})())
+        toBe : (n) => {
+            if(n===val){
+                return true;
+            }else{
+                throw new Error("Not Equal")   
+            }
+        }
         ,
         notToBe : (n) =>( n===val? (()=>{ throw new Error("Equal")})(): true )
     }

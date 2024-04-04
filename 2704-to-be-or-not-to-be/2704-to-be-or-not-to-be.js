@@ -4,21 +4,23 @@
  */
 var expect = function(val) {
     return {
-        toBe : (n) => {
-            if (n === val) {
-                return true;
-            } else {
-                throw new Error("Not Equal");
-            }
-        }
-        ,
-        notToBe : (n) =>{
-            if(n===val){
-                throw new Error("Equal");
-            }else{
-                return true;
-            }
-        }
+         toBe: n => n === val ? true : (() => { throw new Error("Not Equal"); })(),
+        notToBe: n => n === val ? (() => { throw new Error("Equal"); })() : true
+        // toBe : (n) => {
+        //     if (n === val) {
+        //         return true;
+        //     } else {
+        //         throw new Error("Not Equal");
+        //     }
+        // }
+        // ,
+        // notToBe : (n) =>{
+        //     if(n===val){
+        //         throw new Error("Equal");
+        //     }else{
+        //         return true;
+        //     }
+        // }
         
     }
 };

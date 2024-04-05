@@ -3,13 +3,18 @@
  * @return { increment: Function, decrement: Function, reset: Function }
  */
 var createCounter = function(init) {
-    var defaultVal = init;
+    var pre = init ;
     return {
-        increment : () => ++defaultVal,
-        reset : () =>  defaultVal = init ,
-        decrement : () => {
-          return --defaultVal ;   
-        }  
+        increment : function(){
+            return ++pre;
+        },
+        decrement : function(){
+            return --pre;
+        },
+        reset : function(){
+            pre= init
+            return pre;
+        },
     }
 };
 

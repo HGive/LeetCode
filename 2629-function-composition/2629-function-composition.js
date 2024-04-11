@@ -3,13 +3,15 @@
  * @return {Function}
  */
 var compose = function(functions) {
-        if(functions.length===0){
-            return function(x) {return x;}
+    if(functions.length===0){
+        return function(x){
+            return x;
         }
+    }
     // functions.reverse();
-        return functions.reduceRight((accum,curr)=>{
+        return functions.reduce((accum,curr)=>{
             return function(x) {
-            return curr(accum(x));
+            return accum(curr(x));
         }
     })
 };

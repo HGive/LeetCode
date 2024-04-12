@@ -3,26 +3,16 @@
  * @return {Function}
  */
 function memoize(fn) {
-    // var cache = {};
-    // return function(...args) {
-    //     var key = JSON.stringify(args);
-    //     if(key in cache){
-    //         return cache[key]
-    //     }else{
-    //         cache[key] = fn(...args);
-    //         return cache[key];
-    //     }
-    // }
-    var cache = new Map();
-    return function(...args){
-        var key = args.toString();
-        if(cache.has(key)){
-            return cache.get(key);
-        }else{
-            var result = fn(...args);
-            cache.set(key,result);
-            return cache.get(key);
-        }
+    var cache = {};
+        return function(...args) {
+            var key = JSON.stringify(args);
+            if(key in cache){
+                return cache[key];
+            }else{
+                var result = fn(...args);                
+                cache[key]=result;
+                return result;
+            }
     }
 }
 

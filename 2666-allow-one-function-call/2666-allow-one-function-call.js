@@ -3,15 +3,14 @@
  * @return {Function}
  */
 var once = function(fn) {
-   var flag = true;
+    var count = 0;
     return function(...args){
-        if(flag){
-            flag = false;
-            return fn(...args);    
+        if(count===0){
+            count++;
+            return fn(...args);
         }else{
             return undefined;
         }
-        
     }
 };
 

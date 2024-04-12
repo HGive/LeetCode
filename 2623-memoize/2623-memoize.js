@@ -3,14 +3,15 @@
  * @return {Function}
  */
 function memoize(fn) {
-    var cache = {};
+    // var cache = {};
+    var map = new Map();
         return function(...args) {
             var key = JSON.stringify(args);
-            if(key in cache){
-                return cache[key];
+            if(map.has(key)){
+                return map.get(key);
             }else{
                 var result = fn(...args);                
-                cache[key]=result;
+                map.set(key,result);
                 return result;
             }
     }

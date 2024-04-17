@@ -6,8 +6,7 @@
  */
 var cancellable = function(fn, args, t) {
     var timeoutId = setTimeout(()=>fn(...args),t);
-    var cancelFn = ()=>clearTimeout(timeoutId);
-    return cancelFn;
+    return ()=>clearTimeout(timeoutId);;
 };
 
 /**
